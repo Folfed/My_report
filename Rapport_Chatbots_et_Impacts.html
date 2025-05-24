@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse Statistique - Enquête Chatbots IA</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .chart-container {
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        canvas {
+            max-height: 400px;
+        }
+        
+        .insights {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .insights h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .insights ul {
+            color: #1b5e20;
+            line-height: 1.6;
+        }
+        strong u {
+            color: green
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Enquête sur l'utilisation des Chatbots IA & leur impact dans l'éducation.</h1>
+        <h2 style="text-align: center; color:blue">Institut de Formation et de Recherche en Informatique (IFRI-UAC)</h2>
+        <h4 style="text-align: center; color: brown">Licence 2 - Intelligence Artificielle</h4>
+        <p style="font-size:larger"><strong><u>Enquêteur: </u></strong> <i>M. FOLLY Mahulolo Fédel Betsaleel</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><u>Enseignant: </u></strong>Mme Mariam KANONTE </p>
+        <p class="subtitle">Analyse statistique - Mai 2025 • Échantillon: 116 répondants</p>
+        <div style="background: linear-gradient(135deg, #e8f5e8, rgb(11, 194, 240));
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid rgb(17, 158, 194);">
+            <h2><u>Analyse de la méthode de collecte de données - Google Forms</u></h2>
+
+<h3><u>1. Identification des données nécessaires</u></h3>
+
+<b>Données démographiques</b><br>
+- <b>Niveau d'étude</b> : Pour segmenter les réponses selon l'expérience académique<br>
+- <b>Domaine d'étude</b> : Identifier les variations d'usage selon les disciplines<br>
+- <b>Tranche d'âge</b> : Comprendre les différences générationnelles dans l'adoption de l'IA<br>
+<br>
+<b>Données comportementales</b><br>
+- <b>Tâches d'utilisation</b> : Types d'activités pour lesquelles l'IA est sollicitée<br>
+- <b>Chatbots utilisés</b> : Paysage concurrentiel et diversité des outils<br>
+- <b>Fréquence d'utilisation</b> : Intensité de l'adoption (quotidienne, régulière, occasionnelle, rare)<br>
+<br>
+<b>Données d'opinion et perception</b><br>
+- <b>Préférence entre chatbots</b> : Choix privilégié et motivations<br>
+- <b>Justification des préférences</b> : Critères de sélection (qualité, facilité, interface, rapidité)<br>
+- <b>Perception générale</b> : Attitude positive/négative envers l'IA en éducation<br>
+- <b>Avantages perçus</b> : Bénéfices identifiés par les utilisateurs<br>
+- <b>Inconvénients perçus</b> : Risques et limitations reconnus<br>
+
+<h3><u>2. Détermination des sources de données</u></h3>
+
+<b>Population cible</b><br>
+- <b>Étudiants principalement</b> : Licence (majorité), Master, Collège/Lycée<br>
+- <b>Domaines variés</b> : Informatique (dominant), Ingénierie, Médecine, Administration, etc.<br>
+- <b>Âge concentré</b> : Principalement 15-30 ans (génération native numérique)<br>
+<br>
+<b>Justification du choix de la population</b><br>
+- <b>Pertinence</b> : Les étudiants sont les premiers adopteurs de l'IA dans l'éducation<br>
+- <b>Accessibilité</b> : Population facilement atteignable via les canaux numériques<br>
+- <b>Représentativité</b> : Diversité des niveaux et domaines d'étude<br>
+- <b>Expertise d'usage</b> : Utilisateurs réguliers avec une expérience significative<br>
+
+<h3><u></u>3. Choix de la méthode de collecte : Google Forms</h3>
+
+<h4>Avantages de Google Forms</h4>
+
+<b>Accessibilité et facilité d'usage</b><br>
+- Interface intuitive pour les répondants<br>
+- Accessible sur tous les appareils (mobile, tablette, ordinateur)<br>
+- Pas besoin de création de compte pour répondre<br>
+- Lien de partage simple et direct<br>
+<br>
+<b>Fonctionnalités techniques adaptées</b><br>
+- <b>Questions à choix multiples</b> : Parfaites pour les préférences de chatbots, fréquence d'usage<br>
+- <b>Cases à cocher multiples</b> : Idéales pour les tâches d'utilisation (plusieurs réponses possibles)<br>
+- <b>Questions ouvertes</b> : Permettent de recueillir les justifications détaillées<br>
+- <b>Questions conditionnelles</b> : Adaptation du questionnaire selon les réponses<br>
+- <b>Validation automatique</b> : Garantit la complétude des réponses obligatoires<br>
+<br>
+<b>Avantages logistiques</b><br>
+- <b>Coût nul</b> : Solution gratuite accessible aux étudiants/chercheurs<br>
+- <b>Déploiement rapide</b> : Création et diffusion en quelques minutes<br>
+- <b>Collecte automatisée</b> : Pas d'intervention manuelle nécessaire<br>
+- <b>Export facilité</b> : Données directement exploitables en CSV/Excel<br>
+<br>
+<b>Traçabilité et fiabilité</b><br>
+- <b>Horodatage automatique</b> : Permet d'analyser la temporalité des réponses<br>
+- <b>Prévention des doublons</b> : Options pour limiter les réponses multiples<br>
+- <b>Sauvegarde automatique</b> : Aucun risque de perte de données<br>
+
+<h4 style="color:rgb(8, 145, 8)">Justification méthodologique</h4>
+
+<b>Adapté au public cible</b><br>
+- Les étudiants en informatique et disciplines connexes sont familiers avec les outils Google<br>
+- Génération native numérique comfortable avec les formulaires en ligne<br>
+- Cohérence avec l'objet d'étude (usage des technologies numériques)<br>
+<br>
+<b>Efficacité de diffusion</b><br>
+- Partage viral possible via réseaux sociaux, groupes étudiants, emails<br>
+- Pas de contrainte géographique ou temporelle<br>
+- Permet d'atteindre un échantillon large rapidement<br>
+<br>
+<b>Qualité des données collectées</b><br>
+- <b>Standardisation</b> : Questions identiques pour tous les répondants<br>
+- <b>Réduction des biais d'enquêteur</b> : Pas d'influence de l'interviewer<br>
+- <b>Anonymat</b> : Favorise la sincérité des réponses<br>
+- <b>Structuration</b> : Données directement exploitables pour l'analyse<br>
+<br>
+<b>Flexibilité analytique</b><br>
+- Format CSV compatible avec tous les outils d'analyse statistique<br>
+- Possibilité de croiser facilement les variables<br>
+- Visualisations automatiques disponibles dans Google Forms<br>
+- Export vers des outils plus sophistiqués (R, Python, SPSS) si nécessaire<br>
+
+<h3 style="color: rgb(235, 15, 15)">4. Limites et considérations</h3>
+
+<b>Biais potentiels</b><br>
+- <b>Biais de sélection</b> : Seuls les utilisateurs connectés et motivés répondent<br>
+- <b>Biais technologique</b> : Population déjà favorable au numérique<br>
+- <b>Auto-sélection</b> : Les non-utilisateurs d'IA sont sous-représentés<br>
+<br>
+<b>Contraintes techniques</b><br>
+- <b>Longueur limitée</b> : Questions ouvertes peuvent être superficielles<br>
+- <b>Pas de relance</b> : Impossible d'approfondir certaines réponses intéressantes<br>
+- <b>Contrôle qualité limité</b> : Difficile de vérifier la sincérité de certaines réponses<br>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">~93%</span>
+                <span class="stat-label">Préfèrent ChatGPT</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">~83%</span>
+                <span class="stat-label">Âgés de 15-20 ans</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">~90%</span>
+                <span class="stat-label">Étudiants en Licence</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">~93%</span>
+                <span class="stat-label">Opinion positive</span>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Répartition par Niveau d'Étude</div>
+            <canvas id="niveauChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Chatbots Préférés</div>
+            <canvas id="chatbotChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Fréquence d'Utilisation</div>
+            <canvas id="frequenceChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Répartition par Tranche d'Âge</div>
+            <canvas id="ageChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Opinion sur l'IA dans l'Éducation</div>
+            <canvas id="opinionChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Top 8 des Tâches d'Utilisation de l'IA</div>
+            <canvas id="tachesChart"></canvas>
+        </div>
+        
+        <div class="insights">
+            <h3>🔍 Principales Conclusions</h3>
+            <ul>
+                <li><strong>Domination de ChatGPT</strong> : Environ 95% des répondants le préfèrent aux autres chatbots</li>
+                <li><strong>Public jeune</strong> : Environ 85% ont entre 15-20 ans, principalement étudiants en Licence</li>
+                <li><strong>Usage intensif</strong> : Environ 80% utilisent l'IA quotidiennement ou régulièrement</li>
+                <li><strong>Perception positive</strong> : Environ 95% ont une opinion favorable de l'IA dans l'éducation</li>
+                <li><strong>Domaine technique</strong> : Forte représentation des étudiants en informatique et ingénierie</li>
+                <li><strong>Polyvalence d'usage</strong> : Programmation, recherche, rédaction et révisions sont les tâches principales</li>
+                <li><strong>Raisons de préférence</strong> : Facilité d'utilisation, rapidité, qualité des réponses et popularité (ayant aquis le marché très tôt)</li>
+            </ul>
+        </div>
+        <div class="insights">
+            <h2>Perceptions sur les impacts de l'IA dans l'éducation</h2>
+            <p>
+            D'après l'analyse des réponses de cette enquête sur les chatbots, voici les principaux avantages et inconvénients identifiés par les utilisateurs :<br>
+
+<h2 style="color:rgb(18, 204, 18)">Avantages de l'IA</h2>
+
+<b>Efficacité et gain de temps</b><br>
+- Accès rapide et facile à l'information<br>
+- Automatisation des tâches répétitives<br>
+- Optimisation du temps d'exécution<br>
+- Recherches plus efficaces<br>
+<br>
+<b>Facilitation de l'apprentissage</b><br>
+- Améliore la compréhension des cours<br>
+- Aide à la clarification de concepts complexes<br>
+- Soutien dans l'apprentissage et l'autoformation<br>
+- Permet d'avoir une vue d'ensemble rapide d'un sujet<br>
+<br>
+<b>Amélioration de la productivité</b><br>
+- Simplification des tâches quotidiennes<br>
+- Assistance personnalisée ("du sur-mesure")<br>
+- Facilite tous les domaines de la vie<br>
+<h2 style="color: rgb(235, 15, 15)">Inconvénients de l'IA</h2>
+
+<b>Dépendance et paresse intellectuelle</b><br>
+- Risque de dépendance excessive<br>
+- Réduction de l'effort personnel et de la réflexion<br>
+- Paresse intellectuelle et procrastination<br>
+- Perte d'autonomie dans la résolution de problèmes<br>
+
+<b>Impact sur l'emploi et la société</b><br>
+- Risque de disparition de certains emplois<br>
+- Augmentation du chômage potentiel<br>
+
+<b>Préoccupations techniques et environnementales</b><br>
+- Impact écologique (consommation d'eau et CO2 des datacenters)<br>
+- Consommation énergétique importante<br>
+- Problèmes de fiabilité des réponses parfois<br>
+
+<b>Autres risques</b><br>
+- Protection des données personnelles<br>
+- Risque de désinformation si mal utilisée<br>
+- Réduction des capacités de recherche traditionnelle<br>
+<br>
+L'enquête révèle une perception globalement positive (majorité de répondants favorables), mais avec une conscience aiguë des risques de dépendance et d'impact sur les capacités intellectuelles personnelles.
+        </p>
+    </div>
+    </div>
+
+    <script>
+        // Configuration globale des graphiques
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.font.size = 12;
+        Chart.defaults.plugins.legend.position = 'bottom';
+        
+        const colors = [
+            '#3498db', '#e74c3c', '#f39c12', '#2ecc71', '#9b59b6', 
+            '#1abc9c', '#34495e', '#e67e22', '#95a5a6', '#f1c40f'
+        ];
+        
+        // Graphique 1: Niveau d'étude
+        new Chart(document.getElementById('niveauChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Licence', 'Master', 'Collège/Lycée'],
+                datasets: [{
+                    data: [100, 6, 10],
+                    backgroundColor: colors.slice(0, 3),
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.raw / total) * 100).toFixed(1);
+                                return context.label + ': ' + context.raw + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Graphique 2: Chatbots préférés
+        new Chart(document.getElementById('chatbotChart'), {
+            type: 'pie',
+            data: {
+                labels: ['ChatGPT', 'Copilot', 'Gemini'],
+                datasets: [{
+                    data: [108, 6, 2],
+                    backgroundColor: ['#3498db', '#e74c3c', '#f39c12'],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.raw / total) * 100).toFixed(1);
+                                return context.label + ': ' + context.raw + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Graphique 3: Fréquence d'utilisation
+        new Chart(document.getElementById('frequenceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Quotidienne', 'Régulière', 'Occasionnelle', 'Rare'],
+                datasets: [{
+                    data: [30, 54, 22, 6],
+                    backgroundColor: colors[3],
+                    borderColor: colors[3],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 5 }
+                    }
+                }
+            }
+        });
+        
+        // Graphique 4: Répartition par âge
+        new Chart(document.getElementById('ageChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['15-20 ans', '20-30 ans', 'Plus de 30 ans'],
+                datasets: [{
+                    data: [96, 16, 4],
+                    backgroundColor: [colors[4], colors[5], colors[6]],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.raw / total) * 100).toFixed(1);
+                                return context.label + ': ' + context.raw + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Graphique 5: Opinion sur l'IA
+        new Chart(document.getElementById('opinionChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Positif', 'Négatif'],
+                datasets: [{
+                    data: [108, 8],
+                    backgroundColor: [colors[3], colors[1]],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 10 }
+                    }
+                }
+            }
+        });
+        
+        // Graphique 6: Tâches d'utilisation
+        new Chart(document.getElementById('tachesChart'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Programmation/débogage',
+                    'Recherches/Documentation', 
+                    'Rédaction de textes',
+                    'Révisions/Compréhension',
+                    'Idées de projets',
+                    'Résumés de cours',
+                    'Génération d\'images',
+                    'Loisirs'
+                ],
+                datasets: [{
+                    data: [70, 90, 64, 70, 64, 40, 36, 6],
+                    backgroundColor: colors[0],
+                    borderColor: colors[0],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 10 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
