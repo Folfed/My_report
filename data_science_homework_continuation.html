@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoir Personnel - Data Science (Suite)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header, footer {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 40px;
+        }
+        p {
+            margin-left: 20px;
+            text-align: justify;
+        }
+        .info {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            background-color: #f39c12;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Devoir Personnel - Suite</h1>
+        <div class="info">Institut de Formation et de Recherche en Informatique (IFRI-UAC)</div>
+        <div class="info">Licence 2 - Intelligence Artificielle</div>
+        <div class="info">Étudiant : M. FOLLY Mahulolo Fédel Betsaleel</div>
+        <div class="info">Enseignante : Mme Mariam KANONTE</div>
+    </header>
+
+    <div class="container">
+        <h2>8. Dans quel cas on utilise chaque normalisation ?</h2>
+        <p>La <span class="highlight">normalisation Min-Max</span> (0-1) est utilisée quand on veut préserver les relations proportionnelles entre les valeurs et que les données ont une distribution uniforme. Elle est idéale pour les réseaux de neurones et les algorithmes basés sur la distance.</p>
+        
+        <p>La <span class="highlight">normalisation Z-score</span> (standardisation) est utilisée quand les données suivent une distribution normale ou quand on veut centrer les données autour de zéro. Elle est recommandée pour les algorithmes d'apprentissage automatique sensibles à l'échelle comme SVM, régression logistique, et analyse en composantes principales.</p>
+        
+        <p>La <span class="highlight">normalisation robuste</span> est utilisée en présence d'outliers car elle utilise la médiane et les quartiles plutôt que la moyenne et l'écart-type.</p>
+
+        <h2>9. Peut-on faire du traitement d'image avec la Data Science ?</h2>
+        <p>Absolument ! Le traitement d'image fait partie intégrante de la Data Science moderne. Les images sont des données numériques (matrices de pixels) qui peuvent être analysées avec des techniques de Data Science :</p>
+        
+        <p><strong>Techniques utilisées :</strong> Réseaux de neurones convolutionnels (CNN), apprentissage profond, vision par ordinateur, analyse de textures, détection de contours, segmentation d'images.</p>
+        
+        <p><strong>Applications pratiques :</strong> Reconnaissance faciale, diagnostic médical par imagerie, détection d'objets, classification d'images, traitement d'images satellitaires, analyse de documents scannés.</p>
+        
+        <p>Les bibliothèques comme OpenCV, TensorFlow, PyTorch et scikit-image permettent d'appliquer des algorithmes de Data Science aux images.</p>
+
+        <h2>10. Différence entre valeur aberrante et valeur incohérente</h2>
+        <p>Une <span class="highlight">valeur aberrante (outlier)</span> est une valeur numériquement extrême mais qui reste dans le domaine de validité de la variable. Elle peut être correcte mais inhabituelle (ex: une personne de 2,20m dans un échantillon de tailles).</p>
+        
+        <p>Une <span class="highlight">valeur incohérente</span> est une valeur qui viole les règles logiques ou les contraintes du domaine d'étude. Elle est impossible ou illogique (ex: âge négatif, salaire de -500€, température de 200°C pour un humain).</p>
+        
+        <p><strong>Traitement :</strong> Les valeurs aberrantes peuvent être conservées après analyse, tandis que les valeurs incohérentes doivent généralement être corrigées ou supprimées.</p>
+
+        <h2>11. Données incomplètes et données incohérentes</h2>
+        <p>Les <span class="highlight">données incomplètes</span> sont des données où certaines valeurs sont manquantes (valeurs nulles, NA, vides). Elles résultent souvent de problèmes de collecte, de saisie, ou de non-réponse.</p>
+        
+        <p>Les <span class="highlight">données incohérentes</span> sont des données présentes mais qui ne respectent pas les règles logiques ou les contraintes métier.</p>
+        
+        <p><strong>Traitement des données incomplètes :</strong> Suppression des lignes/colonnes, imputation par moyenne/médiane/mode, utilisation d'algorithmes tolérants aux valeurs manquantes.</p>
+        
+        <p><strong>Traitement des données incohérentes :</strong> Validation des règles métier, correction manuelle, suppression des enregistrements problématiques, utilisation de contraintes d'intégrité.</p>
+
+        <h2>12. Utiliser les hiérarchies de concepts</h2>
+        <p>Les hiérarchies de concepts permettent d'organiser les données selon différents niveaux de granularité et de généralisation :</p>
+        
+        <p><strong>Généralisation :</strong> Remplacer des valeurs spécifiques par des catégories plus générales (ex: âges précis → tranches d'âge : 20-30 ans, 30-40 ans).</p>
+        
+        <p><strong>Spécialisation :</strong> Décomposer une catégorie générale en sous-catégories plus précises.</p>
+        
+        <p><strong>Applications :</strong> Réduction de la dimensionnalité, amélioration de la généralisation des modèles, protection de la vie privée (anonymisation), création de features plus pertinentes pour l'analyse.</p>
+        
+        <p><strong>Exemple pratique :</strong> Pour analyser les ventes, on peut utiliser une hiérarchie géographique : Ville → Région → Pays → Continent, permettant d'analyser les données à différents niveaux selon les besoins.</p>
+
+        <h2>13. Comment on fait le binning ?</h2>
+        <p>Le binning consiste à regrouper des valeurs continues en intervalles discrets (bins ou classes) :</p>
+        
+        <p><strong>Binning à largeur égale :</strong> Diviser la plage de valeurs en intervalles de même taille. Exemple : pour des âges de 0 à 100 ans, créer 10 bins de 10 ans chacun.</p>
+        
+        <p><strong>Binning à fréquence égale :</strong> Créer des intervalles contenant le même nombre d'observations. Utile pour éviter les bins vides.</p>
+        
+        <p><strong>Binning basé sur les quantiles :</strong> Utiliser les quartiles, déciles ou percentiles pour définir les limites des bins.</p>
+        
+        <p><strong>Binning manuel :</strong> Définir les intervalles selon l'expertise métier (ex: tranches de revenus significatives).</p>
+        
+        <p><strong>Avantages :</strong> Réduction du bruit, simplification des données, amélioration des performances de certains algorithmes, meilleure interprétabilité.</p>
+
+        <h2>14. Exploration des données</h2>
+        <p>L'exploration des données (EDA - Exploratory Data Analysis) est une étape cruciale qui consiste à examiner et comprendre les données avant la modélisation :</p>
+        
+        <p><strong>Analyse descriptive :</strong> Calcul de statistiques descriptives (moyenne, médiane, écart-type, quartiles), identification des valeurs manquantes et aberrantes.</p>
+        
+        <p><strong>Visualisation :</strong> Création de graphiques (histogrammes, boxplots, scatter plots, heatmaps) pour identifier des patterns, tendances, et relations entre variables.</p>
+        
+        <p><strong>Analyse de distribution :</strong> Étude de la forme des distributions (normale, asymétrique, multimodale), tests de normalité.</p>
+        
+        <p><strong>Analyse de corrélation :</strong> Identification des relations linéaires et non-linéaires entre variables.</p>
+        
+        <p><strong>Objectifs :</strong> Comprendre la structure des données, identifier les problèmes de qualité, formuler des hypothèses, guider le choix des techniques de préprocessing et de modélisation.</p>
+
+        <h2>15. Différence entre redondance et multiplication</h2>
+        <p>En contexte de Data Science :</p>
+        
+        <p>La <span class="highlight">redondance</span> fait référence à la présence d'informations dupliquées ou répétitives dans les données. Elle peut être :</p>
+        <p>- <strong>Redondance des enregistrements :</strong> Lignes identiques ou quasi-identiques</p>
+        <p>- <strong>Redondance des attributs :</strong> Variables qui portent la même information (ex: âge et date de naissance)</p>
+        <p>- <strong>Impact :</strong> Augmente la taille des données, peut biaiser les analyses, ralentit les traitements</p>
+        
+        <p>La <span class="highlight">multiplication</span> peut référer à :</p>
+        <p>- <strong>Augmentation artificielle du volume :</strong> Duplication intentionnelle pour équilibrer un dataset</p>
+        <p>- <strong>Feature multiplication :</strong> Création de nouvelles variables par combinaison (produit de variables existantes)</p>
+        <p>- <strong>Data augmentation :</strong> Génération de nouvelles observations à partir des existantes (transformation d'images, ajout de bruit)</p>
+        
+        <p><strong>Traitement :</strong> La redondance doit généralement être éliminée, tandis que la multiplication peut être une technique utile selon le contexte.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 IFRI-UAC - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
